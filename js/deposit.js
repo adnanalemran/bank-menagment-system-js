@@ -2,7 +2,7 @@ document.getElementById('btn-deposit').addEventListener('click', function () {
      const newDepositAmountString = document.getElementById('deposit-fileld').value;
      const newDepositAmount = parseFloat(newDepositAmountString);
      const depositTotalElement = document.getElementById('deposit-statas');
-     document.getElementById('deposit-fileld').value = ' ';
+     document.getElementById('deposit-fileld').value = '';
      if(isNaN(newDepositAmount)){
           alert('Please Provite a valid number')
           return  0;
