@@ -12,7 +12,8 @@ document.getElementById('btn-login').addEventListener('click', function(){
           location.href='bank.html';
      }
      else{
-          document.getElementById('statas-text').innerText = "Invalid email or password"
+          document.getElementById('statas-wrong').innerText = "Invalid email or password   "
+   
           document.getElementById('btn-login').innerText = "re-try"
      }
 })
