@@ -1,68 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-     <meta charset="UTF-8">
+<head>     <!-- Background decorative elements -->
+     <div class="fixed inset-0 overflow-hidden pointer-events-none">
+          <div class="absolute top-20 right-10 w-32 h-32 bg-purple-500 rounded-full opacity-10 animate-bounce-slow"></div>
+          <div class="absolute bottom-20 left-10 w-24 h-24 bg-blue-500 rounded-full opacity-15 animate-pulse-slow"></div>
+          <div class="absolute top-1/2 left-1/3 w-16 h-16 bg-indigo-500 rounded-full opacity-10 animate-bounce-slow" style="animation-delay: 1s;"></div>
+     </div>
+
+     <main class="relative z-10">
+          <header class="container mx-auto px-6 py-8">
+               <div class="text-center animate-fade-in">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white bangla-font mb-4">
+                         আমাদের পরিষেবায় আপনাকে 
+                         <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent bangla-font animate-pulse">স্বাগতম</span>!
+                    </h1>
+                    <p class="text-purple-200 text-lg">Your trusted banking partner • Secure • Fast • Reliable</p>
+               </div>
+          </header>
+     </main> <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Bank v2</title>
+     <title>JS-Bank Dashboard - Manage Your Finances</title>
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="style.css">
      <script src="https://cdn.tailwindcss.com"></script>
-
+     <script>
+          tailwind.config = {
+               theme: {
+                    extend: {
+                         fontFamily: {
+                              'inter': ['Inter', 'sans-serif'],
+                         },
+                         animation: {
+                              'slide-in': 'slideIn 0.6s ease-out',
+                              'fade-in': 'fadeIn 0.5s ease-in-out',
+                              'bounce-slow': 'bounce 3s infinite',
+                              'pulse-slow': 'pulse 2s infinite',
+                         },
+                         keyframes: {
+                              slideIn: {
+                                   '0%': { transform: 'translateY(20px)', opacity: '0' },
+                                   '100%': { transform: 'translateY(0)', opacity: '1' },
+                              },
+                              fadeIn: {
+                                   '0%': { opacity: '0' },
+                                   '100%': { opacity: '1' },
+                              }
+                         }
+                    }
+               }
+          }
+     </script>
 </head>
 
-<body class="bg-gradient-to-r from-neutral-900 to-neutral-700">
-     <main>
-          <header>
-               <h2 class="text-center  text-5xl my-5  bangla-font text-white">আমাদের পরিষেবায় আপনাকে <samp
-                         class="text-red-500 bangla-font">স্বাগতম</samp> !</h2>
-          </header>
-     </main>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen font-inter">
+    
 
-     <!-- status-unit-start-->
-     <section class="text-white bangla-font ">
-          <div class=" pt-8 p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-lg ">
-               <div class="grid grid-col-3 grid-flow-col gap-4">
-                    <div class="bg-green-500 rounded-xl shadow-lg p-6 ">
-                         <h4 class="text-3xl bangla-font">মোট জমা </h4>
-                         <p class="font-semibold text-2xl">৳<span id="status-deposit">1000</span></p>
-                    </div>
-                    <div class="bg-red-500 rounded-xl shadow-lg p-6 ">
-                         <h4 class="text-3xl">উত্তোলন </h4>
-                         <p class="font-semibold text-2xl">৳<span id="status-withdraw">200</span></p>
-                    </div>
-                    <div class="bg-blue-500 rounded-xl shadow-lg p-6 ">
-                         <h4 class="text-3xl">নগদ তহবিল</h4>
-                         <p class="font-semibold text-2xl"">৳<span id="status-blance">800</span></p>
+     <!-- Banking Dashboard -->
+     <section class="relative z-10 container mx-auto px-6 pb-12">
+          <div class="animate-slide-in">
+               <!-- Account Balance Cards -->
+               <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <!-- Deposit Card -->
+                    <div class="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-2xl p-6 transform hover:scale-105 transition-all duration-300 border border-emerald-400/20">
+                         <div class="flex items-center justify-between mb-4">
+                              <div>
+                                   <h3 class="text-2xl font-bold text-white bangla-font">মোট জমা</h3>
+                                   <p class="text-emerald-100 text-sm">Total Deposits</p>
+                              </div>
+                              <div class="p-3 bg-white/20 rounded-full">
+                                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                   </svg>
+                              </div>
+                         </div>
+                         <p class="text-3xl font-bold text-white">৳<span id="status-deposit">1000</span></p>
+                         <div class="mt-4 h-2 bg-emerald-400/30 rounded-full">
+                              <div class="h-2 bg-white/60 rounded-full w-3/4"></div>
+                         </div>
                     </div>
 
+                    <!-- Withdraw Card -->
+                    <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-2xl shadow-2xl p-6 transform hover:scale-105 transition-all duration-300 border border-red-400/20">
+                         <div class="flex items-center justify-between mb-4">
+                              <div>
+                                   <h3 class="text-2xl font-bold text-white bangla-font">উত্তোলন</h3>
+                                   <p class="text-red-100 text-sm">Total Withdrawals</p>
+                              </div>
+                              <div class="p-3 bg-white/20 rounded-full">
+                                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                                   </svg>
+                              </div>
+                         </div>
+                         <p class="text-3xl font-bold text-white">৳<span id="status-withdraw">200</span></p>
+                         <div class="mt-4 h-2 bg-red-400/30 rounded-full">
+                              <div class="h-2 bg-white/60 rounded-full w-1/2"></div>
+                         </div>
+                    </div>
 
+                    <!-- Balance Card -->
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-2xl p-6 transform hover:scale-105 transition-all duration-300 border border-blue-400/20">
+                         <div class="flex items-center justify-between mb-4">
+                              <div>
+                                   <h3 class="text-2xl font-bold text-white bangla-font">নগদ তহবিল</h3>
+                                   <p class="text-blue-100 text-sm">Available Balance</p>
+                              </div>
+                              <div class="p-3 bg-white/20 rounded-full">
+                                   <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                   </svg>
+                              </div>
+                         </div>
+                         <p class="text-3xl font-bold text-white">৳<span id="status-blance">800</span></p>
+                         <div class="mt-4 h-2 bg-blue-400/30 rounded-full">
+                              <div class="h-2 bg-white/60 rounded-full w-4/5"></div>
+                         </div>
+                    </div>
                </div>
-               <div class=" grid grid-col-2 grid-flow-col gap-4 mt-10 ">
-                    <div class=" bg-green-500 rounded-xl shadow-lg p-6 mb-4">
-                         <h2 class="text-3xl">টাকা জমা করুন</h2>
-                         <input type="text" id="box-deposit" class=" text-red-800 w-9/12 rounded text-sm block p-1 my-3"
-                              placeholder="এখানে কত টাকা জমা চান তা লিখুন  ">
-                         <button
-                              class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 px-8 py-2 text-white rounded text-sm " id="btn-deposit" >জমা</button>
+
+               <!-- Transaction Section -->
+               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Deposit Section -->
+                    <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20">
+                         <div class="flex items-center gap-4 mb-6">
+                              <div class="p-3 bg-emerald-500 rounded-full">
+                                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                   </svg>
+                              </div>
+                              <div>
+                                   <h2 class="text-2xl font-bold text-white bangla-font">টাকা জমা করুন</h2>
+                                   <p class="text-gray-300 text-sm">Add funds to your account</p>
+                              </div>
+                         </div>
+                         
+                         <div class="space-y-4">
+                              <div>
+                                   <label for="box-deposit" class="block text-white text-sm font-medium mb-2">Amount to Deposit</label>
+                                   <input type="text" id="box-deposit" 
+                                          class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200"
+                                          placeholder="এখানে কত টাকা জমা চান তা লিখুন">
+                              </div>
+                              <button id="btn-deposit" 
+                                      class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                                   <span class="flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                        </svg>
+                                        জমা করুন
+                                   </span>
+                              </button>
+                         </div>
                     </div>
 
-                    <div class=" bg-red-500 rounded-xl shadow-lg p-6 mb-4">
-                         <h2 class="text-3xl">টাকা উত্তোলন করুন</h2>
-                         <input type="text" id="box-writhdraw" class=" text-red-800 w-9/12 rounded text-sm block p-1 my-3"
-                              placeholder="এখানে কত টাকা তুলতে চান তা লিখুন ">
-                         <button id="btn-withdraw"
-                              class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 px-8 py-2 text-white rounded text-sm ">উত্তোলন</button>
+                    <!-- Withdraw Section -->
+                    <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20">
+                         <div class="flex items-center gap-4 mb-6">
+                              <div class="p-3 bg-red-500 rounded-full">
+                                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                                   </svg>
+                              </div>
+                              <div>
+                                   <h2 class="text-2xl font-bold text-white bangla-font">টাকা উত্তোলন করুন</h2>
+                                   <p class="text-gray-300 text-sm">Withdraw funds from your account</p>
+                              </div>
+                         </div>
+                         
+                         <div class="space-y-4">
+                              <div>
+                                   <label for="box-writhdraw" class="block text-white text-sm font-medium mb-2">Amount to Withdraw</label>
+                                   <input type="text" id="box-writhdraw" 
+                                          class="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-all duration-200"
+                                          placeholder="এখানে কত টাকা তুলতে চান তা লিখুন">
+                              </div>
+                              <button id="btn-withdraw" 
+                                      class="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-400">
+                                   <span class="flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                                        </svg>
+                                        উত্তোলন করুন
+                                   </span>
+                              </button>
+                         </div>
                     </div>
-
                </div>
           </div>
      </section>
-     <!-- status-unit-start-->
      
+     <!-- Footer -->
+     <footer class="relative z-10 mt-16 py-8 border-t border-white/10">
+          <div class="container mx-auto px-6">
+               <div class="text-center">
+                    <p class="text-white/70 text-sm mb-4">Update 2025 JS-Bank System.|| Adnan Al-Emran</p>
+                    
+               </div>
+          </div>
+     </footer>
+
  <script src="js/utilits.js"></script>
  <script src="js/opration.js"></script>
 </body>
